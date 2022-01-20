@@ -22,7 +22,7 @@ function App() {
         setCountry(data.Countries);
         setGlobal(data.Global);
         setDate(data.Global.Date)
-        console.log(country);
+        // console.log(country);
       })
     .catch((error) => {
       setStatus("error");
@@ -44,7 +44,7 @@ function App() {
 
 
   return (
-    <div>
+    <div id='home'>
       <nav>
         <Link to="/">
 

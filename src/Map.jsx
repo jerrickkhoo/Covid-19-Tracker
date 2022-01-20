@@ -51,7 +51,7 @@ markers.push(
 
 }
 
-console.log(markers)
+// console.log(markers)
 
 const countryName = document.getElementById('countryName')
 function toggle() {

@@ -1,4 +1,5 @@
 import React from 'react'
+import Map from './Map'
 
 const Home = (props) => {
 
@@ -8,10 +9,11 @@ const Home = (props) => {
 
 
     return (
-      <div>
+      <div id='home'>
         <h3>Global stats as of {date2}</h3>
         <h3>Confirmed cases: {confirmed}</h3>
         <h3>Death count: {deaths}</h3>
+        <Map />
       </div>
     );
 }
