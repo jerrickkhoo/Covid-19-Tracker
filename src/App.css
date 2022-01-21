@@ -42,9 +42,9 @@ nav a:hover {
 }
 
 main {
-  width: 900px;
+  width: auto;
   margin: auto;
-  height: 100%;
+  height: auto;
 }
 
 #home{
@@ -69,11 +69,15 @@ div{
     flex: 1;
     overflow: auto;
     height: 400px;
+    width: 300px;
+    display: inline-block;
 }  
 
 #data2 {
     margin-right: 20px;
-    text-align: right;
+    text-align: center;
+    width: 300px;
+    display: inline-block;
 } 
 
 #home{
@@ -84,8 +88,10 @@ div{
 
 #countries{
   display: block;
-  height: 780px;
+  height: 100%;
   text-align: left;
+  width: 100%;
+  position: absolute;
 }
 
 img{
@@ -104,13 +110,32 @@ border: 1px black
 #flag{
 height: 160px;
 width: 300px;
-text-align: center;
-border: black;
-margin: auto;
+border: black 1px;
+margin: 0 auto;
 background-size: cover;
+padding: 0;
 
 }
 
 #title{
   text-align: center;
 }
+
+#root{
+  height:100%
+}
+
+#bar{
+  display: inline-block;
+}
+
+#countries{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#listCountry{
+  margin: 5px 0px;
+}
+

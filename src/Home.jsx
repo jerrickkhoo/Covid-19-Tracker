@@ -1,5 +1,6 @@
 import React from 'react'
 import Map from './Map'
+import Chart from './BarChart';
 
 const Home = (props) => {
 
