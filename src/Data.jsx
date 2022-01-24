@@ -96,7 +96,7 @@ const Data = (props) => {
       <h1 id="title">{params.c.toUpperCase()}</h1>
       <div className="data">
         <div className="dataChild" style={{ backgroundColor: "lightgrey" }}>
-          <h3 id="hData">Historical Data Total Cumulative:</h3>
+          <h3 id="hData">Historical Daily Cases:</h3>
           <h4>{list}</h4>
         </div>
         <div className="dataChild" id="data2">

@@ -86,13 +86,13 @@ div{
   height: 780px;
 }
 
-#countries{
+/* #countries{
   display: block;
   height: 100%;
   text-align: left;
   width: 100%;
   position: absolute;
-}
+} */
 
 img{
 background-size: 50%;
@@ -108,13 +108,12 @@ border: 1px black
 }
 
 #flag{
-height: 160px;
+height: 200px;
 width: 300px;
-border: black 1px;
-margin: 0 auto;
-background-size: cover;
-padding: 0;
-
+border: solid #000;
+border-width: 1px 1px;
+margin: auto;
+background-size:cover;
 }
 
 #title{
@@ -131,11 +130,113 @@ padding: 0;
 
 #countries{
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
+  flex-direction: row;
+  flex-wrap  : wrap;
 
+}
+/* 
 #listCountry{
   margin: 5px 0px;
+  display: flex;
+  flex-direction: row;
+} */
+#country{
+  margin: 0 10px;
 }
 
+#alpha{
+  display: flex;
+  flex-direction: row;
+  flex-wrap  : wrap;
+  text-align: left;
+  margin: 0 10px;
+
+}
+
+.search1{
+   text-align: center;
+  width: 100%;
+}
+
+.search2{
+   text-align: center;
+  width:100%;
+}
+
+#searches{
+  width: 100%;
+  text-align: center;
+}
+
+input{
+  width: 400px;
+  height: 30px;
+  text-align: center;
+}
+
+#submit{
+  text-align: center;
+  height: 30px;
+  width: 150px;
+}
+
+
+#c1{
+  display: inline-block;
+  margin: 10px 10px;
+  text-align: center;
+  width: 20%;
+}
+
+#c2{
+  display: inline-block;
+  margin: 10px 10px;
+  text-align: center;
+}
+
+#flag1{
+height: 60px;
+width: 90px;
+/* border: black; */
+margin: 0 30px;
+background-size: cover;
+/* padding: black; */
+display: inline-block;
+border: solid #000;
+border-width: 1px 1px;
+}
+
+#c1name{
+  display: inline-block;
+}
+
+#flag2{
+height: 60px;
+width: 90px;
+/* border: black; */
+margin: 0 30px;
+background-size: cover;
+/* padding: black; */
+display: inline-block;
+border: solid #000;
+border-width: 1px 1px;
+}
+
+#c2name{
+  display: inline-block;
+}
+
+#bar1{
+  width: 150px;
+  display: inline-block;
+  text-align: center;
+
+}
+
+.compareC{
+  display: flex;
+}
+
+.half{
+  flex:50%
+}
