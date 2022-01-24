@@ -116,7 +116,9 @@ const Data = (props) => {
           <h3>Active cases: {active.toLocaleString()} </h3>
           <h3>Critical cases: {critical.toLocaleString()} </h3>
         </div>
+        <div className='dataChild'>
         <BarChart params={params} />
+        </div>
       </div>
     </>
   );

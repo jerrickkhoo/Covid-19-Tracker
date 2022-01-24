@@ -1,79 +1,184 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import BarChart from "./BarChart";
+import { Bar } from "react-chartjs-2";
+import { Chart, registerables } from "chart.js";
 
 const Local = () => {
-const [status, setStatus] = useState("");
-const [data, setData] = useState("");
-const [data2, setData2] = useState("");
+  const [status, setStatus] = useState("");
+  const [data, setData] = useState("");
+  const [data2, setData2] = useState("");
+  const [data3, setData3] = useState("");
 
+  const url = `https://corona.lmao.ninja/v2/countries/Singapore?yesterday=true&strict=true&query`;
 
-const url = `https://corona.lmao.ninja/v2/countries/Singapore?yesterday=true&strict=true&query`;
+  const getData = () => {
+    setStatus("pending");
+    fetch(url)
+      .then((response) => response.json())
+      .then((info) => {
+        setStatus("complete");
+        setData(info);
+      })
+      .catch((error) => {
+        setStatus("error");
+        console.error("Error:", error);
+      });
+  };
 
-const getData = () => {
-  setStatus("pending");
-  fetch(url)
-    .then((response) => response.json())
-    .then((info) => {
-      setStatus("complete");
-      setData(info);
-    })
-    .catch((error) => {
-      setStatus("error");
-      console.error("Error:", error);
-    });
-};
+  useEffect(() => {
+    getData();
+  }, [url]);
 
-useEffect(() => {
-  getData();
-}, [url]);
+  const url2 =
+    "https://data.gov.sg/api/action/datastore_search?resource_id=9ec89dc0-cb6b-4604-aaff-382d5e850206&limit=30";
+  const getData2 = () => {
+    setStatus("pending");
+    fetch(url2)
+      .then((response) => response.json())
+      .then((info) => {
+        setStatus("complete");
+        setData2(info);
+      })
+      .catch((error) => {
+        setStatus("error");
+        console.error("Error:", error);
+      });
+  };
 
-// const url2 = `https://corona.lmao.ninja/v2/historical/${params.c}?lastdays=all`;
-// const getData2 = () => {
-//   setStatus("pending");
-//   fetch(url2)
-//     .then((response) => response.json())
-//     .then((info) => {
-//       setStatus("complete");
-//       setData2(info);
-//     })
-//     .catch((error) => {
-//       setStatus("error");
-//       console.error("Error:", error);
-//     });
-// };
+  useEffect(() => {
+    getData2();
+  }, [url2]);
 
-// useEffect(() => {
-//   getData2();
-// }, [url2]);
+  const population = parseInt(data.population);
+  const cases = parseInt(data.cases);
+  const deaths = parseInt(data.deaths);
+  const recovered = parseInt(data.recovered);
+  const active = parseInt(data.active);
+  const critical = parseInt(data.critical);
 
-// if (status === "pending") {
-//   return "LOADING";
-// }
+  const ageGroup = [];
+  let ageGroupKey = data2?.result?.records.map((items) => {
+    ageGroup.push(items?.age);
+  });
 
-// if (status === "error") {
-//   return "ERROR";
-// }
+  const completedFull = [];
+  let completedFullKey = data2?.result?.records.map((items) => {
+    completedFull.push(items?.completed_full_regimen);
+  });
 
- const population = parseInt(data.population);
- const cases = parseInt(data.cases);
- const deaths = parseInt(data.deaths);
- const recovered = parseInt(data.recovered);
- const active = parseInt(data.active);
- const critical = parseInt(data.critical);
+  const unvaccinated = [];
+  let unvaccinatedKey = data2?.result?.records.map((items) => {
+    unvaccinated.push(items?.unvaccinated);
+  });
 
+  const atLeastOneDose = [];
+  let atLeastOneDoseKey = data2?.result?.records.map((items) => {
+    atLeastOneDose.push(items?.at_least_one_dose);
+  });
+
+  const url3 = `https://corona.lmao.ninja/v2/historical/Singapore?lastdays=31`;
+
+  const getData3 = () => {
+    setStatus("pending");
+    fetch(url3)
+      .then((response) => response.json())
+      .then((info) => {
+        setStatus("complete");
+        setData3(info.timeline.cases);
+      })
+      .catch((error) => {
+        setStatus("error");
+        console.error("Error:", error);
+      });
+  };
+
+  useEffect(() => {
+    getData3();
+  }, [url3]);
+
+  let keys = Object.keys(data3);
+  keys.shift();
+  let value = Object.values(data3);
+  let values = [];
+  for (let i = 0; i < value.length; i++) {
+    values[i] = value[i] - value[i - 1];
+  }
+  values.shift();
+
+  if (status === "pending") {
+    return "LOADING";
+  }
+
+  if (status === "error") {
+    return "ERROR";
+  }
   return (
     <>
-      <div id='local'>
+      <div id='localHeader'>
+      <h1  id='singapore'class='stats3'>Singapore</h1>
+        <div class="stats3">
           <h3>Population: {population.toLocaleString()}</h3>
           <h3>Total cases: {cases.toLocaleString()} </h3>
           <h3>Total deaths: {deaths.toLocaleString()} </h3>
           <h3>Total recovered: {recovered.toLocaleString()} </h3>
           <h3>Active cases: {active.toLocaleString()} </h3>
           <h3>Critical cases: {critical.toLocaleString()} </h3>
-        </div>    
-        </>
+        </div>
+      </div>
+      <div id="local">
+        <div id="stats1">
+          <h2>Vaccination status according to age group in %</h2>
+          <Bar
+            data={{
+              labels: ageGroup,
+              datasets: [
+                {
+                  label: "Completed Full",
+                  data: completedFull,
+                  backgroundColor: "teal",
+                },
+                {
+                  label: "Unvaccinated",
+                  data: unvaccinated,
+                  backgroundColor: "red",
+                },
+                {
+                  label: "At least one dose",
+                  data: atLeastOneDose,
+                  backgroundColor: "orange",
+                },
+              ],
+            }}
+            height={300}
+            width={500}
+            options={{
+              maintainAspectRatio: true,
+            }}
+          />
+        </div>
+        <div id="stats2">
+          <h2>No. of cases in past 30 days</h2>
+          <Bar
+            data={{
+              labels: keys,
+              datasets: [
+                {
+                  label: "# of cases for past 30 days",
+                  data: values,
+                  backgroundColor: "teal",
+                },
+              ],
+            }}
+            height={300}
+            width={500}
+            options={{
+              maintainAspectRatio: true,
+            }}
+          />
+        </div>
+      </div>
+    </>
   );
 };
 

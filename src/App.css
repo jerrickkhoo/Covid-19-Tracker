@@ -73,7 +73,7 @@ div{
 }
 
 .dataChild {
-    flex: 1;
+    flex: 33%;
     overflow: auto;
     height: 400px;
     width: 300px;
@@ -126,6 +126,7 @@ background-size:cover;
 
 #bar{
   display: inline-block;
+  padding: 0 20px;
 }
 
 #countries{
@@ -226,6 +227,7 @@ border-width: 1px 1px;
   display: inline-block;
   text-align: center;
 
+
 }
 
 .compareC{
@@ -254,5 +256,31 @@ opacity: 50%;
 }
 
 #local{
-  padding: 10px 10px
+  display: flex;
 }
+
+#stats1{
+  flex: 50%;
+  text-align: center;
+  height:auto
+}
+#stats2{
+  flex: 50%;
+  text-align: center;
+  height: auto;
+}
+
+.stats3{
+  flex: 50%;
+  padding: 10px 50px
+}
+
+#localHeader{
+  display: flex;
+}
+
+#singapore{
+  font-size: 80px;
+  text-align: left;
+}
+
