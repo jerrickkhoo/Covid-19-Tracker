@@ -79,7 +79,6 @@ const [search2, setSearch2] = useState("");
           <h3>Total deaths: {data[1]?.deaths.toLocaleString()} </h3>
           <h3>Total recovered: {data[1]?.recovered.toLocaleString()} </h3>
           <h3>1 case per {data[1]?.oneCasePerPeople.toLocaleString()} people</h3>
-
           <CompareBarChart2 country={data[1]?.country} />
         </div>
       </div>
