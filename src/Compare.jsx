@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState,useEffect} from 'react'
 import CompareBarChart1 from './CompareBarChart1';
+import CompareBarChart2 from './CompareBarChart2';
 
 const Compare = () => {
 const [status, setStatus] = useState("");
@@ -60,10 +61,11 @@ const [search2, setSearch2] = useState("");
             style={{ backgroundImage: `url(${data[0]?.countryInfo?.flag})` }}
             id="flag1"
           ></div>
-          <h3>Population: {data[0]?.population}</h3>
-          <h3>Total cases: {data[0]?.cases} </h3>
-          <h3>Total deaths: {data[0]?.deaths} </h3>
-          <h3>Total recovered: {data[0]?.recovered} </h3>
+          <h3>Population: {data[0]?.population.toLocaleString()}</h3>
+          <h3>Total cases: {data[0]?.cases.toLocaleString()} </h3>
+          <h3>Total deaths: {data[0]?.deaths.toLocaleString()} </h3>
+          <h3>Total recovered: {data[0]?.recovered.toLocaleString()} </h3>
+          <h3>1 case per {data[0]?.oneCasePerPeople.toLocaleString()} people</h3>
           <CompareBarChart1 country={data[0]?.country} />
         </div>
         <div id="c2" className="half">
@@ -72,11 +74,13 @@ const [search2, setSearch2] = useState("");
             style={{ backgroundImage: `url(${data[1]?.countryInfo?.flag})` }}
             id="flag2"
           ></div>
-          <h3>Population: {data[1]?.population}</h3>
-          <h3>Total cases: {data[1]?.cases} </h3>
-          <h3>Total deaths: {data[1]?.deaths} </h3>
-          <h3>Total recovered: {data[1]?.recovered} </h3>
-          <CompareBarChart1 country={data[1]?.country} />
+          <h3>Population: {data[1]?.population.toLocaleString()}</h3>
+          <h3>Total cases: {data[1]?.cases.toLocaleString()} </h3>
+          <h3>Total deaths: {data[1]?.deaths.toLocaleString()} </h3>
+          <h3>Total recovered: {data[1]?.recovered.toLocaleString()} </h3>
+          <h3>1 case per {data[1]?.oneCasePerPeople.toLocaleString()} people</h3>
+
+          <CompareBarChart2 country={data[1]?.country} />
         </div>
       </div>
     </div>

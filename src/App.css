@@ -3,8 +3,20 @@ body {
   margin: 0;
   padding: 0;
   font-size: 14pt;
-  width: 100%;
-  height: 100%
+}
+
+
+body::after {
+  content: "";
+  background: url('https://www.cdc.gov/coronavirus/2019-ncov/images/COVID-19-SM-1200px.jpg');
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position:fixed;
+  z-index: -1;   
+  background-size:contain
 }
 
 nav {
@@ -41,18 +53,13 @@ nav a:hover {
   background: #282c34;
 }
 
-main {
-  width: auto;
-  margin: auto;
-  height: auto;
-}
 
 #home{
   display: inline-block;
   text-align: right;
   width: 100%;
   margin: 0px;
-  padding: 0px;
+  padding: 100px;
 }
 
 div{
@@ -71,6 +78,7 @@ div{
     height: 400px;
     width: 300px;
     display: inline-block;
+    text-align: center;
 }  
 
 #data2 {
@@ -84,15 +92,10 @@ div{
   margin: 0;
   padding: 0;
   height: 780px;
+
 }
 
-/* #countries{
-  display: block;
-  height: 100%;
-  text-align: left;
-  width: 100%;
-  position: absolute;
-} */
+
 
 img{
 background-size: 50%;
@@ -100,9 +103,6 @@ border: 1px black
 }
 
 #hData{
-    /* top: 0; */
-    /* bottom:57%; */
-    /* position:fixed; */
     overflow-y:scroll;
     overflow-x:hidden;
 }
@@ -134,12 +134,7 @@ background-size:cover;
   flex-wrap  : wrap;
 
 }
-/* 
-#listCountry{
-  margin: 5px 0px;
-  display: flex;
-  flex-direction: row;
-} */
+
 #country{
   margin: 0 10px;
 }
@@ -239,4 +234,25 @@ border-width: 1px 1px;
 
 .half{
   flex:50%
+}
+
+h1,h2,h3,h4,div{
+  font-family: 'Merriweather', serif;
+}
+
+.homepage{
+  padding:   0 20px;
+}
+
+#bg{
+    background-image: url('https://www.cdc.gov/coronavirus/2019-ncov/images/COVID-19-SM-1200px.jpg');
+opacity: 50%;
+}
+
+.country{
+  font-weight: bold;
+}
+
+#local{
+  padding: 10px 10px
 }

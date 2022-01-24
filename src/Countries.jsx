@@ -28,7 +28,7 @@ const countries = (props) => {
     getData();
   }, [url]);
 
-  const arr = ["loading"];
+  const arr = [];
 
   let countryList = data.map((items) => {
     arr.push(items?.country);
@@ -391,7 +391,7 @@ const countries = (props) => {
   });
 
   return (
-    <div>
+    <div className='country'>
       <div>
         <h2 id="alpha">A</h2>
         <div id="countries">{listA}</div>

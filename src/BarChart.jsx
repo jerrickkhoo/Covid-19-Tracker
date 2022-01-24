@@ -53,7 +53,7 @@ const [status, setStatus] = useState("");
             {
                 label: '# of cases for past 30 days',
                 data: values,
-                backgroundColor:'red'
+                backgroundColor:'teal'
             }
         ]
         }}

@@ -5,6 +5,7 @@ import Countries from "./Countries";
 import Home from './Home'
 import Data from './Data'
 import Compare from './Compare'
+import Local from "./Local";
 import { Route, Routes, Link, useNavigate } from "react-router-dom";
 
 function App() {
@@ -45,22 +46,23 @@ function App() {
 
 
   return (
-    <div id='home'>
+    <div id="home">
       <nav>
         <Link to="/">
-
-          <h1>Covid 19</h1>
+          <h1>Covid-19</h1>
         </Link>
 
+        <Link to="/Local">Local Info</Link>
         <Link to="/Countries">Countries</Link>
-        <Link to='/Compare'>Compare Countries</Link>
+        <Link to="/Compare">Compare Countries</Link>
       </nav>
       <main>
         <Routes>
           <Route path="/" element={<Home global={global} date={date} />} />
           <Route path="/Countries" element={<Countries country={country} />} />
-          <Route path="/data/:c" element={<Data country={country}/>} />
-          <Route path='/compare' element={<Compare />}/>
+          <Route path="/data/:c" element={<Data country={country} />} />
+          <Route path="/compare" element={<Compare />} />
+          <Route path="/local" element={<Local />} />
         </Routes>
       </main>
     </div>

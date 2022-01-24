@@ -82,10 +82,19 @@ const Data = (props) => {
   let list = arr.map((item) => {
     return (
       <h3>
-        {item[0]}: {item[1]} cases
+        {item[0]}: {item[1].toLocaleString()} cases
       </h3>
     );
   });
+
+  const population = parseInt(data2.population);
+  const cases = parseInt(data2.cases);
+  const deaths = parseInt(data2.deaths);
+  const recovered = parseInt(data2.recovered);
+  const active = parseInt(data2.active)
+  const critical = parseInt(data2.critical)
+
+
 
   return (
     <>
@@ -95,72 +104,22 @@ const Data = (props) => {
       ></div>
       <h1 id="title">{params.c.toUpperCase()}</h1>
       <div className="data">
-        <div className="dataChild" style={{ backgroundColor: "lightgrey" }}>
+        <div className="dataChild" style={{ backgroundColor: "white" }}>
           <h3 id="hData">Historical Daily Cases:</h3>
           <h4>{list}</h4>
         </div>
         <div className="dataChild" id="data2">
-          <h3>Population: {data2.population}</h3>
-          <h3>Total cases: {data2.cases} </h3>
-          <h3>Total deaths: {data2.deaths} </h3>
-          <h3>Total recovered: {data2.recovered} </h3>
+          <h3>Population: {population.toLocaleString()}</h3>
+          <h3>Total cases: {cases.toLocaleString()} </h3>
+          <h3>Total deaths: {deaths.toLocaleString()} </h3>
+          <h3>Total recovered: {recovered.toLocaleString()} </h3>
+          <h3>Active cases: {active.toLocaleString()} </h3>
+          <h3>Critical cases: {critical.toLocaleString()} </h3>
         </div>
         <BarChart params={params} />
       </div>
     </>
   );
+  }
 
-  //   const dataList = data.slice().reverse();
-  //   let dataListReverse = dataList.map((items) => {
-  //     return (
-  //       <>
-  //         <p>
-  //           Date: {items.Date.slice(0, 10)}
-  //           <br />
-  //           Total Confirmed: {items?.Confirmed}
-  //           <br />
-  //           Province: {items?.Province}
-  //         </p>
-  //       </>
-  //     );
-  //   });
-
-  // const dataList2 = data2.slice().reverse()
-  // let dataList2Reverse = dataList2.map((items) => {
-  //   return (
-  //     <>
-  //       <p>
-  //         Date: {items?.Date.slice(0, 10)}
-  //         <br />
-  //         Total Confirmed: {items?.Confirmed}
-  //       </p>
-  //     </>
-  //   );
-  // });
-
-  // let header = params.c.toUpperCase()
-
-  //   return (
-  //     <>
-  //       <h1 id="dataHeader">{header}</h1>
-  //       <div class="data">
-  //         <div class="dataChild">
-  //           <h2>Cases by provinces: </h2>
-  //           <div>{dataListReverse}</div>
-  //         </div>
-  //         <div>
-  //           <h3 class="dataChild" id="data2">
-  //             Total Cases: {data2?.cases}
-  //             <br />
-  //             Cases Today: {data2?.todayCases}
-  //             <br />
-  //             Deaths Today: {data2?.todayDeaths}
-  //           </h3>
-  //           <div></div>
-  //         </div>
-  //       </div>
-  //     </>
-  //   );
-  // };
-};;
 export default Data;
