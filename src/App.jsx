@@ -6,7 +6,7 @@ import Home from './Home'
 import Data from './Data'
 import Compare from './Compare'
 import Local from "./Local";
-import { Route, Routes, Link, useNavigate } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 
 function App() {
   const [country, setCountry] = useState([]);
@@ -58,7 +58,7 @@ function App() {
       </nav>
       <main>
         <Routes>
-          <Route path="/" element={<Home global={global} date={date} />} />
+          <Route path="/" element={<Home global={global} date={date} country={country} />} />
           <Route path="/Countries" element={<Countries country={country} />} />
           <Route path="/data/:c" element={<Data country={country} />} />
           <Route path="/compare" element={<Compare />} />

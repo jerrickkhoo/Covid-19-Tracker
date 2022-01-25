@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import BarChart from './BarChart'
+import BarChart from "./BarChart";
 
 const Data = (props) => {
   const params = useParams();
@@ -58,9 +58,8 @@ const Data = (props) => {
     return "ERROR";
   }
 
-
   let keys = Object.keys(h);
-  keys.shift()
+  keys.shift();
   //   console.log("k", keys);
   let value = Object.values(h);
   let values = [];
@@ -68,16 +67,13 @@ const Data = (props) => {
     values[i] = value[i] - value[i - 1];
   }
   values.shift();
-  
-  let arr = []
-  for (let i = 0; i < keys.length; i++) {
-  arr[i] = [keys[i],values[i]]
-  }
-  arr=arr.reverse()
-  // console.log("v", arr);
-  
 
-  
+  let arr = [];
+  for (let i = 0; i < keys.length; i++) {
+    arr[i] = [keys[i], values[i]];
+  }
+  arr = arr.reverse();
+  // console.log("v", arr);
 
   let list = arr.map((item) => {
     return (
@@ -91,24 +87,20 @@ const Data = (props) => {
   const cases = parseInt(data2.cases);
   const deaths = parseInt(data2.deaths);
   const recovered = parseInt(data2.recovered);
-  const active = parseInt(data2.active)
-  const critical = parseInt(data2.critical)
-
-
+  const active = parseInt(data2.active);
+  const critical = parseInt(data2.critical);
 
   return (
     <>
-      <div
-        style={{ backgroundImage: `url(${data2?.countryInfo?.flag})` }}
-        id="flag"
-      ></div>
-      <h1 id="title">{params.c.toUpperCase()}</h1>
-      <div className="data">
-        <div className="dataChild" style={{ backgroundColor: "white" }}>
-          <h3 id="hData">Historical Daily Cases:</h3>
-          <h4>{list}</h4>
+      <div className='firstDataDiv'>
+        <div className='dataHeader'>
+          <div
+            style={{ backgroundImage: `url(${data2?.countryInfo?.flag})` }}
+            id="flag"
+          ></div>
+          <h1 id="title">{params.c.toUpperCase()}</h1>
         </div>
-        <div className="dataChild" id="data2">
+        <div className="dataHeader" id="data2">
           <h3>Population: {population.toLocaleString()}</h3>
           <h3>Total cases: {cases.toLocaleString()} </h3>
           <h3>Total deaths: {deaths.toLocaleString()} </h3>
@@ -116,12 +108,18 @@ const Data = (props) => {
           <h3>Active cases: {active.toLocaleString()} </h3>
           <h3>Critical cases: {critical.toLocaleString()} </h3>
         </div>
-        <div className='dataChild'>
-        <BarChart params={params} />
+      </div>
+      <div className='secondDataDiv'>
+        <div className="dataChild1" style={{ backgroundColor: "white" }}>
+          <h3 id="hData">Historical Daily Cases:</h3>
+          <h4>{list}</h4>
+        </div>
+        <div className="dataChild2">
+          <BarChart params={params} />
         </div>
       </div>
     </>
   );
-  }
+};
 
 export default Data;

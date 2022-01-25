@@ -16,7 +16,7 @@ body::after {
   right: 0;
   position:fixed;
   z-index: -1;   
-  background-size:contain
+  background-size:cover
 }
 
 nav {
@@ -72,8 +72,12 @@ div{
     text-align: left;
 }
 
-.dataChild {
-    flex: 33%;
+.secondDataDiv{
+  display: flex;
+}
+
+.dataChild1 {
+    flex: 40%;
     overflow: auto;
     height: 400px;
     width: 300px;
@@ -81,9 +85,13 @@ div{
     text-align: center;
 }  
 
+.dataChild2{
+  flex: 60%;
+}
+
 #data2 {
     margin-right: 20px;
-    text-align: center;
+    text-align: right;
     width: 300px;
     display: inline-block;
 } 
@@ -136,9 +144,12 @@ background-size:cover;
 
 }
 
-#country{
-  margin: 0 10px;
+.countries{
+  display: flex;
+  flex-direction: row;
+
 }
+
 
 #alpha{
   display: flex;
@@ -149,20 +160,19 @@ background-size:cover;
 
 }
 
-.search1{
-   text-align: center;
-  width: 100%;
+.search{
+  flex: 50%;
+  text-align: center;
+  padding-top: 10px;
 }
 
-.search2{
-   text-align: center;
-  width:100%;
-}
+
 
 #searches{
-  width: 100%;
-  text-align: center;
+  display: flex;
 }
+
+
 
 input{
   width: 400px;
@@ -198,8 +208,8 @@ margin: 0 30px;
 background-size: cover;
 /* padding: black; */
 display: inline-block;
-border: solid #000;
-border-width: 1px 1px;
+/* border: solid #000;
+border-width: 1px 1px; */
 }
 
 #c1name{
@@ -214,8 +224,8 @@ margin: 0 30px;
 background-size: cover;
 /* padding: black; */
 display: inline-block;
-border: solid #000;
-border-width: 1px 1px;
+/* border: solid #000;
+border-width: 1px 1px; */
 }
 
 #c2name{
@@ -238,7 +248,7 @@ border-width: 1px 1px;
   flex:50%
 }
 
-h1,h2,h3,h4,div{
+h1,h2,h3,h4,div,::placeholder{
   font-family: 'Merriweather', serif;
 }
 
@@ -251,8 +261,16 @@ h1,h2,h3,h4,div{
 opacity: 50%;
 }
 
-.country{
+#country{
   font-weight: bold;
+  padding: 0 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+}
+
+p{
+  flex-direction: row;
 }
 
 #local{
@@ -268,6 +286,7 @@ opacity: 50%;
   flex: 50%;
   text-align: center;
   height: auto;
+  padding: 0px 15px 10px 0;
 }
 
 .stats3{
@@ -284,3 +303,60 @@ opacity: 50%;
   text-align: left;
 }
 
+input{
+  background-color: white;
+  color: black;
+  border: solid black;
+  border-width: 1px 1px;
+  
+}
+
+::placeholder{
+  color: grey;
+}
+
+.firstDataDiv{
+  display: flex;
+}
+
+.dataHeader{
+  flex: 50%;
+}
+
+#home2{
+  display: flex;
+}
+
+#homeChild{
+  flex: 33%;
+  text-align: center;
+  padding: 10px 10px;
+  background-color: white;
+  border: solid black;
+  margin: 40px 10px;
+}
+
+.child{
+  display: block;
+  text-align: left;
+  padding: 10px 20px 30px 20px;
+}
+
+#alph{
+  font-weight: bold;
+  display: block;
+}
+
+.link{
+  padding: 0px 10px;
+  font-weight: bold;
+
+}
+
+button{
+width: 150px;
+}
+
+#button{
+  text-align: center;
+}

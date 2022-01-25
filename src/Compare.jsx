@@ -17,6 +17,8 @@ const [search2, setSearch2] = useState("");
      .then((info) => {
        setStatus("complete");
        setData(info);
+       setSearch1('')
+       setSearch2('')
      })
      .catch((error) => {
        setStatus("error");
@@ -26,7 +28,7 @@ const [search2, setSearch2] = useState("");
 
  useEffect(() => {
    getData();
- }, [url]);
+ }, []);
 
  function searchText1(e) {
     setSearch1(e.target.value);
@@ -36,9 +38,14 @@ const [search2, setSearch2] = useState("");
    setSearch2(e.target.value);
  }
 
+ function handleClick () {
+     getData()
+ }
+
   return (
+     <> 
     <div id="searches">
-      <div className="search1">
+      <div className="search">
         <input
           type="text"
           placeholder="Country 1"
@@ -46,7 +53,7 @@ const [search2, setSearch2] = useState("");
           value={search1}
         />
       </div>
-      <div className="search2">
+      <div className="search">
         <input
           type="text"
           placeholder="Country 2"
@@ -54,6 +61,10 @@ const [search2, setSearch2] = useState("");
           value={search2}
         />
       </div>
+    </div>
+    <div id='button'>
+    <button onClick={handleClick}>Submit</button> 
+    </div>
       <div className="compareC">
         <div id="c1" className="half">
           <h3 id="c1name">{data[0]?.country}</h3>
@@ -81,8 +92,8 @@ const [search2, setSearch2] = useState("");
           <h3>1 case per {data[1]?.oneCasePerPeople.toLocaleString()} people</h3>
           <CompareBarChart2 country={data[1]?.country} />
         </div>
-      </div>
     </div>
+    </>
   );
 };
 
