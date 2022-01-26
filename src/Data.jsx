@@ -89,11 +89,16 @@ const Data = (props) => {
   const recovered = parseInt(data2.recovered);
   const active = parseInt(data2.active);
   const critical = parseInt(data2.critical);
+  const deathPercentage = (deaths/cases*100).toFixed(2)
+  const recoveryPercentage = (recovered/cases*100).toFixed(2)
+  const activePercentage = ((active / cases) * 100).toFixed(2);
+  const casesPercentage = ((cases / population) * 100).toFixed(2);
+
 
   return (
     <>
-      <div className='firstDataDiv'>
-        <div className='dataHeader'>
+      <div className="firstDataDiv">
+        <div className="dataHeader">
           <div
             style={{ backgroundImage: `url(${data2?.countryInfo?.flag})` }}
             id="flag"
@@ -102,14 +107,28 @@ const Data = (props) => {
         </div>
         <div className="dataHeader" id="data2">
           <h3>Population: {population.toLocaleString()}</h3>
-          <h3>Total cases: {cases.toLocaleString()} </h3>
-          <h3>Total deaths: {deaths.toLocaleString()} </h3>
-          <h3>Total recovered: {recovered.toLocaleString()} </h3>
+          <h5 style={{ color: "darkorange" }}>{casesPercentage}% infected</h5>
           <h3>Active cases: {active.toLocaleString()} </h3>
-          <h3>Critical cases: {critical.toLocaleString()} </h3>
+          <h5 style={{ color: "darkorange" }}>
+            {activePercentage}% of total cases
+          </h5>
+        </div>
+        <div className="dataHeader" id="data3">
+          <h3>Total cases: {cases.toLocaleString()} </h3>
+          <h5 style={{ color: "red" }}>
+            {" "}
+            {critical.toLocaleString()} critical
+          </h5>
+          <h3>Total deaths: {deaths.toLocaleString()} </h3>
+          <h5 style={{ color: "red" }}>{deathPercentage}% of total cases</h5>
+
+          <h3>Total recovered: {recovered.toLocaleString()} </h3>
+          <h5 style={{ color: "green" }}>
+            {recoveryPercentage}% of total cases
+          </h5>
         </div>
       </div>
-      <div className='secondDataDiv'>
+      <div className="secondDataDiv">
         <div className="dataChild1" style={{ backgroundColor: "white" }}>
           <h3 id="hData">Historical Daily Cases:</h3>
           <h4>{list}</h4>

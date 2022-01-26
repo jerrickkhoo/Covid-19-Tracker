@@ -25,53 +25,66 @@ const Home = (props) => {
         console.error("Error:", error);
       });
   };
-
+  
   useEffect(() => {
     getData();
   }, [url]);
-
+  
   if (status === "pending") {
     return "LOADING";
   }
-
+  
   if (status === "error") {
     return "ERROR";
   }
-
-  let highestConfirmed = data;
+  
+  const highestConfirmed = data
+  console.log(data)
   highestConfirmed?.sort((a, b) => b?.cases - a?.cases);
-  const top5C = highestConfirmed.slice(0, 5);
-  console.log(top5C);
+  const top5C = highestConfirmed.slice(0, 10);
+  console.log(highestConfirmed);
   let topConfirmed = top5C.map((item)=>{
-    return(
-    <h3>
-      {item?.country}: {item?.cases.toLocaleString()} cases
-    </h3>
-  )})
+      return(
+        <h3>
+          {item?.country}: {item?.cases.toLocaleString()} cases
+        </h3>
+      )})
+      
+      let recoveredPercentage = []
+      for(let i = 0; i<data.length; i++){
+        recoveredPercentage[i] = {'country': data?.[i]?.country,'percentage':parseInt((data?.[i]?.recovered/data?.[i]?.cases)*100).toFixed(2)}
+      }
+      // console.log(recoveredPercentage[0]?.country)
+  
 
-  let highestRecovered = data;
-  highestRecovered?.sort((a, b) => b?.cases - a?.cases);
-  const top5R = highestRecovered.slice(0, 5);
-  console.log(top5R);
+  const highestRecovered = recoveredPercentage.sort(function(a, b){return b.percentage - a.percentage;});
+  const top5R = highestRecovered.slice(0, 10);
+  console.log(highestRecovered);
   let topRecovered = top5R.map((item) => {
     return (
       <h3>
-        {item?.country}: {item?.recovered.toLocaleString()} cases
+        {item?.country}: {item?.percentage}%
       </h3>
     );
   });
 
-   let highestDeath = data;
-   highestDeath?.sort((a, b) => b?.cases - a?.cases);
-   const top5D = highestDeath.slice(0, 5);
-   console.log(top5R);
-   let topDeath = top5D.map((item) => {
-     return (
-       <h3>
-         {item?.country}: {item?.deaths.toLocaleString()} cases
-       </h3>
-     );
-   });
+   let deathPercentage = []
+      for(let i = 0; i<data.length; i++){
+        deathPercentage[i] = {'country': data?.[i]?.country,'percentage':parseInt((data?.[i]?.deaths/data?.[i]?.cases)*100).toFixed(2)}
+      }
+      // console.log(recoveredPercentage[0]?.country)
+  
+
+  const highestDeaths = deathPercentage.sort(function(a, b){return b.percentage - a.percentage;});
+  const top5D = highestDeaths.slice(0, 10);
+  // console.log(highestDeaths);
+  let topDeaths = top5D.map((item) => {
+    return (
+      <h3>
+        {item?.country}: {item?.percentage}%
+      </h3>
+    );
+  });
 
   return (
     <div id="home">
@@ -82,20 +95,16 @@ const Home = (props) => {
       <h3 className="homepage">Death count: {deaths.toLocaleString()}</h3>
       <div id="home2">
         <div id="homeChild">
-          <h3>Top 5 Countries with highest cases: </h3>
-          <h3>{topConfirmed}</h3>
+          <h3>Top 10 Countries with highest cases: </h3>
+          <h4>{topConfirmed}</h4>
         </div>
         <div id="homeChild">
-          <h3>Top 5 Countries with highest recovery: </h3>
-          <h3>
-            {topRecovered}
-          </h3>
+          <h3>Top 10 Countries with highest recovery rate: </h3>
+          <h4 style={{ color: "green" }}>{topRecovered}</h4>
         </div>
         <div id="homeChild">
-          <h3>Top 5 Countries with highest deaths: </h3>
-          <h3>
-            {topDeath}
-          </h3>
+          <h3>Top 10 Countries with highest death rate: </h3>
+          <h4 style={{ color: "red" }}>{topDeaths}</h4>
         </div>
       </div>
     </div>

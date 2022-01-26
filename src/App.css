@@ -79,21 +79,28 @@ div{
 .dataChild1 {
     flex: 40%;
     overflow: auto;
-    height: 400px;
+    height: 350px;
     width: 300px;
     display: inline-block;
     text-align: center;
+    margin: 0 10px 30px 10px;
 }  
 
 .dataChild2{
   flex: 60%;
 }
 
-#data2 {
+#data2{
+  text-align: center;
+  padding-left:80px;
+}
+
+#data3 {
     margin-right: 20px;
     text-align: right;
-    width: 300px;
     display: inline-block;
+    margin: 0 50px 0 0;
+    flex:20%
 } 
 
 #home{
@@ -122,6 +129,7 @@ border: solid #000;
 border-width: 1px 1px;
 margin: auto;
 background-size:cover;
+margin-top: 10px;
 }
 
 #title{
@@ -320,7 +328,9 @@ input{
 }
 
 .dataHeader{
-  flex: 50%;
+  flex: 33%;
+  text-align: right;
+  padding-top: 20px;
 }
 
 #home2{

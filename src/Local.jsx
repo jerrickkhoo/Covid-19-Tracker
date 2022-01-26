@@ -55,6 +55,10 @@ const Local = () => {
   const recovered = parseInt(data.recovered);
   const active = parseInt(data.active);
   const critical = parseInt(data.critical);
+  const deathPercentage = ((deaths / cases) * 100).toFixed(2);
+  const recoveryPercentage = ((recovered / cases) * 100).toFixed(2);
+  const activePercentage = ((active / cases) * 100).toFixed(2);
+  const casesPercentage = ((cases / population) * 100).toFixed(2);
 
   const ageGroup = [];
   let ageGroupKey = data2?.result?.records.map((items) => {
@@ -114,15 +118,27 @@ const Local = () => {
   }
   return (
     <>
-      <div id='localHeader'>
-      <h1  id='singapore'class='stats3'>Singapore</h1>
+      <div id="localHeader">
+        <h1 id="singapore" class="stats3">
+          Singapore
+        </h1>
         <div class="stats3">
           <h3>Population: {population.toLocaleString()}</h3>
-          <h3>Total cases: {cases.toLocaleString()} </h3>
-          <h3>Total deaths: {deaths.toLocaleString()} </h3>
-          <h3>Total recovered: {recovered.toLocaleString()} </h3>
+          <h5 style={{ color: "darkorange" }}>{casesPercentage}% infected</h5>
           <h3>Active cases: {active.toLocaleString()} </h3>
-          <h3>Critical cases: {critical.toLocaleString()} </h3>
+          <h5 style={{ color: "darkorange" }}>
+            {activePercentage}% of total cases
+          </h5>
+          </div>
+          <div class='stats3'>
+          <h3>Total cases: {cases.toLocaleString()} </h3>
+          <h5 style={{ color: "red" }}>{critical} critical</h5>
+          <h3>Total deaths: {deaths.toLocaleString()} </h3>
+          <h5 style={{ color: "red" }}>{deathPercentage}% of total cases</h5>
+          <h3>Total recovered: {recovered.toLocaleString()} </h3>
+          <h5 style={{ color: "green" }}>
+            {recoveryPercentage}% of total cases
+          </h5>
         </div>
       </div>
       <div id="local">

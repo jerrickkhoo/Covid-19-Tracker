@@ -73,7 +73,6 @@ const countries = (props) => {
     [dict.Z],
   ]
 
-console.log(newArray)
 
 const lists = newArray.map((item)=>{
     let alphabet = (item[0]?.[0].charAt(0))
