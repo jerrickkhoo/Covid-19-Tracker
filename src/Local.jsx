@@ -21,7 +21,6 @@ const Local = () => {
       })
       .catch((error) => {
         setStatus("error");
-        console.error("Error:", error);
       });
   };
 

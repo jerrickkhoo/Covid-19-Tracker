@@ -28,7 +28,6 @@ function App() {
       })
     .catch((error) => {
       setStatus("error");
-      console.error("Error:", error);
     });
   };
 

@@ -25,7 +25,6 @@ const [status, setStatus] = useState("");
       })
       .catch((error) => {
         setStatus("error");
-        console.error("Error:", error);
       });
   };
 

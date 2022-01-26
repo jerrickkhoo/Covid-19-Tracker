@@ -22,7 +22,6 @@ const CompareBarChart1 = (props) => {
       })
       .catch((error) => {
         setStatus("error");
-        console.error("Error:", error);
       });
   };
 

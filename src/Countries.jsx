@@ -20,7 +20,6 @@ const countries = (props) => {
       })
       .catch((error) => {
         setStatus("error");
-        console.error("Error:", error);
       });
   };
 

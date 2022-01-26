@@ -22,7 +22,6 @@ const Home = (props) => {
       })
       .catch((error) => {
         setStatus("error");
-        console.error("Error:", error);
       });
   };
   

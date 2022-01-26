@@ -22,7 +22,6 @@ const [search2, setSearch2] = useState("");
      })
      .catch((error) => {
        setStatus("error");
-       console.error("Error:", error);
      });
  };
 

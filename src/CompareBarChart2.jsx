@@ -22,14 +22,13 @@ const CompareBarChart2 = (props) => {
       })
       .catch((error) => {
         setStatus("error");
-        console.error("Error:", error);
       });
   };
 
   useEffect(() => {
     getData();
   }, [url]);
-
+  
   if (status === "pending") {
     return "LOADING";
   }
