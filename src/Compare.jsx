@@ -17,8 +17,8 @@ const [search2, setSearch2] = useState("");
      .then((info) => {
        setStatus("complete");
        setData(info);
-       setSearch1('')
-       setSearch2('')
+    //    setSearch1('')
+    //    setSearch2('')
      })
      .catch((error) => {
        setStatus("error");
