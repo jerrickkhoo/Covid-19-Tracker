@@ -30,6 +30,14 @@ const CompareBarChart2 = (props) => {
     getData();
   }, [url]);
 
+  if (status === "pending") {
+    return "LOADING";
+  }
+
+  if (status === "error") {
+    return "ERROR";
+  }
+
   let keys = Object.keys(data);
   keys.shift();
   //   console.log("k", keys);

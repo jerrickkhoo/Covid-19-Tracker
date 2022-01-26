@@ -33,6 +33,14 @@ const [status, setStatus] = useState("");
     getData();
   }, [url]);
 
+  if (status === "pending") {
+    return "LOADING";
+  }
+
+  if (status === "error") {
+    return "NO DATA FOUND";
+  }
+
   let keys = Object.keys(data);
   keys.shift()
 //   console.log("k", keys);

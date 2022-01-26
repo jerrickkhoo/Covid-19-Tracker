@@ -30,6 +30,14 @@ const [search2, setSearch2] = useState("");
    getData();
  }, []);
 
+ if (status === "pending") {
+   return "LOADING";
+ }
+
+ if (status === "error") {
+   return "ERROR";
+ }
+
  function searchText1(e) {
     setSearch1(e.target.value);
  }

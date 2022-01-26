@@ -28,6 +28,14 @@ const countries = (props) => {
     getData();
   }, [url]);
 
+  if (status === "pending") {
+    return "LOADING";
+  }
+
+  if (status === "error") {
+    return "ERROR";
+  }
+
   const arr = [];
 
   let countryList = data.map((items) => {
