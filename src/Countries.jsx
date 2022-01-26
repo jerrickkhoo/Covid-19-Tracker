@@ -33,7 +33,7 @@ const countries = (props) => {
   }
 
   if (status === "error") {
-    return "ERROR";
+    return "NO DATA FOUND";
   }
 
   const arr = [];

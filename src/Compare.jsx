@@ -35,7 +35,7 @@ const [search2, setSearch2] = useState("");
  }
 
  if (status === "error") {
-   return "ERROR";
+   return "NO DATA FOUND";
  }
 
  function searchText1(e) {

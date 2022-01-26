@@ -35,7 +35,7 @@ const Home = (props) => {
   }
   
   if (status === "error") {
-    return "ERROR";
+    return "NO DATA FOUND";
   }
   
   const highestConfirmed = data

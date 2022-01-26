@@ -41,7 +41,7 @@ function App() {
    }
 
    if (status === "error") {
-     return "ERROR";
+     return "NO DATA FOUND";
    }
 
 
