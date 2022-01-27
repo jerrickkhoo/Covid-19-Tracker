@@ -82,7 +82,7 @@ div{
     height: 370px;
     display: inline-block;
     text-align: center;
-    margin: 0 10px 30px 10px;
+    margin: 0 10px 30px 30px;
 }  
 
 .dataChild2{
@@ -387,11 +387,11 @@ width: 150px;
 }
 
 .homeChildChildChild2{
-  flex: 45%;
+  flex: 60;
 }
 
 .homeChildChildChild3{
-  flex: 45%;
+  flex: 20;
 }
 
 .homeC{
@@ -399,10 +399,15 @@ width: 150px;
 }
 
 #flagg{
-height: 60px;
+height: 70px;
 width: 90px;
-margin: 0 30px;
+margin: 10px 30px;
 background-size: cover;
 display: inline-block;
 border: solid black;
+}
+
+#bar3{
+  transform: rotate(90deg);
+  text-align: center;
 }

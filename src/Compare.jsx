@@ -100,6 +100,8 @@ const [timeframe2, setTimeframe2] = useState("No. Of Cases For Past 30 Days");
 
  }
 
+ console.log(data)
+
   return (
     <>
       <div id="searches">
@@ -149,7 +151,7 @@ const [timeframe2, setTimeframe2] = useState("No. Of Cases For Past 30 Days");
           <button onClick={handle1ChartAll} className="chartButton">
             All
           </button>
-          <CompareBarChart1 country={data[0]?.country} chart={chart1} timeframe={timeframe1}/>
+          <CompareBarChart1 country={data[0]?.country} chart1={chart1} timeframe={timeframe1}/>
         </div>
         <div id="c2" className="half">
           <h3 id="c2name">{data[1]?.country}</h3>
@@ -176,7 +178,7 @@ const [timeframe2, setTimeframe2] = useState("No. Of Cases For Past 30 Days");
           <button onClick={handle2ChartAll} className="chartButton">
             All
           </button>
-          <CompareBarChart2 country={data[1]?.country} chart={chart2} timeframe={timeframe2}/>
+          <CompareBarChart2 country={data[1]?.country} chart2={chart2} timeframe={timeframe2}/>
         </div>
       </div>
     </>

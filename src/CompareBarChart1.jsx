@@ -8,6 +8,7 @@ const CompareBarChart1 = (props) => {
   const [data, setData] = useState("");
   const [status, setStatus] = useState("");
 
+
   const country1 = props.country;
   const chart = props.chart;
   const timeframe = props.timeframe

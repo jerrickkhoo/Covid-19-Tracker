@@ -60,7 +60,7 @@ const Home = (props) => {
 
       let recoveredPercentage = []
       for(let i = 0; i<data.length; i++){
-        recoveredPercentage[i] = {'country': data?.[i]?.country,'percentage':parseInt((data?.[i]?.recovered/data?.[i]?.cases)*100).toFixed(0)}
+        recoveredPercentage[i] = {'country': data?.[i]?.country,'percentage':parseInt((data?.[i]?.recovered/data?.[i]?.cases)*100).toFixed(0),'img':data?.[i]?.countryInfo?.flag}
       }
       
       
@@ -69,17 +69,33 @@ const Home = (props) => {
       console.log(highestRecovered);
       let topRecovered = top5R.map((item) => {
         return (
-          <h3>
-        {item?.country}: {item?.percentage}%
-      </h3>
-    );
+          <div className="homeC">
+            <div
+              style={{ backgroundImage: `url(${item?.img})` }}
+              id="flagg"
+              className="homeChildChildChild1"
+            ></div>
+            <h3 className="homeChildChildChild2" style={{ textAlign: "left" }}>
+              {item?.country}
+            </h3>
+            <h3 className="homeChildChildChild3">
+              {item?.percentage}%
+            </h3>
+          </div>
+        );
   });
   
   console.log(highestRecovered)
 
    let deathPercentage = []
       for(let i = 0; i<data.length; i++){
-        deathPercentage[i] = {'country': data?.[i]?.country,'percentage':parseInt((data?.[i]?.deaths/data?.[i]?.cases)*100).toFixed()}
+        deathPercentage[i] = {
+          country: data?.[i]?.country,
+          percentage: parseInt(
+            (data?.[i]?.deaths / data?.[i]?.cases) * 100
+          ).toFixed(),
+          img: data?.[i]?.countryInfo?.flag,
+        };
       }
       // console.log(recoveredPercentage[0]?.country)
   
@@ -89,9 +105,17 @@ const Home = (props) => {
   // console.log(highestDeaths);
   let topDeaths = top5D.map((item) => {
     return (
-      <h3>
-        {item?.country}: {item?.percentage}%
-      </h3>
+      <div className="homeC">
+        <div
+          style={{ backgroundImage: `url(${item?.img})` }}
+          id="flagg"
+          className="homeChildChildChild1"
+        ></div>
+        <h3 className="homeChildChildChild2" style={{ textAlign: "left" }}>
+          {item?.country}
+        </h3>
+        <h3 className="homeChildChildChild3">{item?.percentage}%</h3>
+      </div>
     );
   });
 
