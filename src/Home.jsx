@@ -43,12 +43,20 @@ const Home = (props) => {
   const top5C = highestConfirmed.slice(0, 10);
   console.log(highestConfirmed);
   let topConfirmed = top5C.map((item)=>{
-      return(
-        <h3>
-          {item?.country}: {item?.cases.toLocaleString()} cases
-        </h3>
-      )})
-      
+      return (
+        <div className='homeC'>
+          <div
+            style={{ backgroundImage: `url(${item?.countryInfo?.flag})` }}
+            id="flagg"
+            className="homeChildChildChild1"
+          ></div>
+          <h3 className="homeChildChildChild2" style={{textAlign:'left'}}>{item?.country}</h3>
+          <h3 className="homeChildChildChild3">
+            {item?.cases.toLocaleString()} cases
+          </h3>
+        </div>
+      );})
+    
 
       let recoveredPercentage = []
       for(let i = 0; i<data.length; i++){
@@ -94,19 +102,26 @@ const Home = (props) => {
         Confirmed cases: {confirmed.toLocaleString()}
       </h3>
       <h3 className="homepage">Death count: {deaths.toLocaleString()}</h3>
+     
       <div id="home2">
+
         <div id="homeChild">
           <h3>Top 10 Countries with highest cases: </h3>
-          <h4>{topConfirmed}</h4>
+          <div className='homeChildChild'>
+          {topConfirmed}
+          </div>
         </div>
+
         <div id="homeChild">
           <h3>Top 10 Countries with highest recovery rate: </h3>
           <h4 style={{ color: "green" }}>{topRecovered}</h4>
         </div>
+
         <div id="homeChild">
           <h3>Top 10 Countries with highest death rate: </h3>
           <h4 style={{ color: "red" }}>{topDeaths}</h4>
         </div>
+
       </div>
     </div>
   );

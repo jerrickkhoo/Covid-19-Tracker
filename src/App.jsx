@@ -54,11 +54,11 @@ function App() {
       </nav>
       <main>
         <Routes>
-          <Route path="/Home" element={<Home global={global} date={date} country={country} />} />
+          <Route path="/home" element={<Home global={global} date={date} country={country} />} />
           <Route path="/Countries" element={<Countries country={country} />} />
-          <Route path="/Data/:c" element={<Data country={country} />} />
-          <Route path="/Compare" element={<Compare />} />
-          <Route path="/Local" element={<Local />} />
+          <Route path="/data/:c" element={<Data country={country} />} />
+          <Route path="/compare" element={<Compare />} />
+          <Route path="/local" element={<Local />} />
         </Routes>
       </main>
     </div>

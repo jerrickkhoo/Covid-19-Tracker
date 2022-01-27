@@ -217,13 +217,10 @@ input{
 #flag1{
 height: 60px;
 width: 90px;
-/* border: black; */
 margin: 0 30px;
 background-size: cover;
-/* padding: black; */
 display: inline-block;
-/* border: solid #000;
-border-width: 1px 1px; */
+
 }
 
 #c1name{
@@ -379,4 +376,33 @@ width: 150px;
 
 #button{
   text-align: center;
+}
+
+.homeChildChild{
+  display: block;
+}
+
+.homeChildChildChild1{
+  flex:20%
+}
+
+.homeChildChildChild2{
+  flex: 45%;
+}
+
+.homeChildChildChild3{
+  flex: 45%;
+}
+
+.homeC{
+  display: flex;
+}
+
+#flagg{
+height: 60px;
+width: 90px;
+margin: 0 30px;
+background-size: cover;
+display: inline-block;
+border: solid black;
 }
