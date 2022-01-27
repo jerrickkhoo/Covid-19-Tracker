@@ -10,7 +10,7 @@ const [status, setStatus] = useState("");
 
 
   const country = props.country;
-  const chart = props.chart
+  const chart = props.chart2
   const timeframe = props.timeframe
 
   const url = `https://corona.lmao.ninja/v2/historical/${country}?lastdays=${chart}`;

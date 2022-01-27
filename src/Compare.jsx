@@ -1,100 +1,107 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import CompareBarChart1 from "./CompareBarChart1";
-import CompareBarChart2 from "./CompareBarChart2";
+import React from 'react';
+import {useState,useEffect} from 'react'
+import CompareBarChart1 from './CompareBarChart1';
+import CompareBarChart2 from './CompareBarChart2';
 
 const Compare = () => {
-  const [status, setStatus] = useState("");
-  const [data, setData] = useState("");
-  const [search1, setSearch1] = useState("");
-  const [search2, setSearch2] = useState("");
-  const [chart1, setChart1] = useState("");
-  const [chart2, setChart2] = useState("");
-  const [timeframe1, setTimeframe1] = useState("");
-  const [timeframe2, setTimeframe2] = useState("");
+const [status, setStatus] = useState("");
+const [data, setData] = useState("");
+const [search1, setSearch1] = useState('')
+const [search2, setSearch2] = useState("");
+const [chart1, setChart1] = useState("31");
+const [chart2, setChart2] = useState("31");
+const [timeframe1, setTimeframe1] = useState("No. Of Cases For Past 30 Days");
+const [timeframe2, setTimeframe2] = useState("No. Of Cases For Past 30 Days");
 
-  const url = `https://corona.lmao.ninja/v2/countries/${search1},${search2}?yesterday`;
-  const getData = () => {
-    setStatus("pending");
-    fetch(url)
-      .then((response) => response.json())
-      .then((info) => {
-        setStatus("complete");
-        setData(info);
-        setTimeframe1("No. Of Cases For Past 30 Days");
-        setTimeframe2("No. Of Cases For Past 30 Days");
-        setChart1("31");
-        setChart2("31");
 
-        //    setSearch1('')
-        //    setSearch2('')
-      })
-      .catch((error) => {
-        setStatus("error");
-      });
-  };
 
-  useEffect(() => {
-    getData();
-  }, []);
 
-  if (status === "pending") {
-    return "LOADING";
-  }
+ const url = `https://corona.lmao.ninja/v2/countries/${search1},${search2}?yesterday`;
+ const getData = () => {
+   setStatus("pending");
+   fetch(url)
+     .then((response) => response.json())
+     .then((info) => {
+       setStatus("complete");
+       setData(info);
 
-  if (status === "error") {
-    return "NO DATA FOUND";
-  }
+    //    setSearch1('')
+    //    setSearch2('')
+     })
+     .catch((error) => {
+       setStatus("error");
+     });
+ };
 
-  function searchText1(e) {
+ useEffect(() => {
+   getData();
+ }, []);
+
+ if (status === "pending") {
+   return "LOADING";
+ }
+
+ if (status === "error") {
+   return "NO DATA FOUND";
+ }
+
+ function searchText1(e) {
     setSearch1(e.target.value);
-  }
+ }
 
-  function searchText2(e) {
-    setSearch2(e.target.value);
-  }
+ function searchText2(e) {
+   setSearch2(e.target.value);
+ }
 
-  function handleClick() {
-    getData();
-  }
+ function handleClick () {
+     getData()
+ }
 
-  function handle1Chart7() {
-    setChart1("8");
-    setTimeframe1("No. Of Cases For Past 7 Days");
-  }
 
-  function handle1Chart30() {
-    setChart1("31");
+ function handle1Chart7() {
+   setChart1("8");
+   setTimeframe1("No. Of Cases For Past 7 Days");
+ }
+
+ function handle1Chart30() {
+   setChart1("31");
     setTimeframe1("No. Of Cases For Past 30 Days");
-  }
-  function handle1Chart1() {
-    setChart1("366");
+
+ }
+ function handle1Chart1() {
+   setChart1("366");
     setTimeframe1("No. Of Cases for Past Year");
-  }
-  function handle1ChartAll() {
-    setChart1("all");
+
+ }
+ function handle1ChartAll() {
+   setChart1("all");
     setTimeframe1("All No. Of Cases");
-  }
 
-  function handle2Chart7() {
-    setChart2("8");
+ }
+
+ function handle2Chart7() {
+   setChart2("8");
     setTimeframe2("No. Of Cases For Past 7 Days");
-  }
 
-  function handle2Chart30() {
-    setChart2("31");
+ }
+
+ function handle2Chart30() {
+   setChart2("31");
     setTimeframe2("No. Of Cases For Past 30 Days");
-  }
-  function handle2Chart1() {
-    setChart2("366");
-    setTimeframe2("No. Of Cases for Past Year");
-  }
-  function handle2ChartAll() {
-    setChart2("all");
-    setTimeframe2("All No. Of Cases");
-  }
 
-  console.log(data);
+ }
+ function handle2Chart1() {
+   setChart2("366");
+    setTimeframe2("No. Of Cases for Past Year");
+
+ }
+ function handle2ChartAll() {
+   setChart2("all");
+    setTimeframe2("All No. Of Cases");
+
+ }
+
+ console.log(data)
 
   return (
     <>
@@ -145,11 +152,7 @@ const Compare = () => {
           <button onClick={handle1ChartAll} className="chartButton">
             All
           </button>
-          <CompareBarChart1
-            country={data[0]?.country}
-            chart1={chart1}
-            timeframe={timeframe1}
-          />
+          <CompareBarChart1 country={data[0]?.country} chart1={chart1} timeframe={timeframe1}/>
         </div>
         <div id="c2" className="half">
           <h3 id="c2name">{data[1]?.country}</h3>
@@ -176,11 +179,7 @@ const Compare = () => {
           <button onClick={handle2ChartAll} className="chartButton">
             All
           </button>
-          <CompareBarChart2
-            country={data[1]?.country}
-            chart2={chart2}
-            timeframe={timeframe2}
-          />
+          <CompareBarChart2 country={data[1]?.country} chart2={chart2} timeframe={timeframe2}/>
         </div>
       </div>
     </>

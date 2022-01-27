@@ -10,7 +10,7 @@ const CompareBarChart1 = (props) => {
 
 
   const country1 = props.country;
-  const chart = props.chart;
+  const chart = props.chart1;
   const timeframe = props.timeframe
 
   const url = `https://corona.lmao.ninja/v2/historical/${country1}?lastdays=${chart}`;
@@ -25,7 +25,6 @@ const CompareBarChart1 = (props) => {
       })
       .catch((error) => {
         setStatus("error");
-        console.error("Error:", error);
       });
   };
 
