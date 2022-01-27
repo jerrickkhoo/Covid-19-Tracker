@@ -121,7 +121,7 @@ const Home = (props) => {
 
   return (
     <div id="home">
-      <h3 className="homepage">Global stats as of {date}</h3>
+      <h3 className="homepage" style={{fontSize:'180%'}}>Global stats as of {date}</h3>
       <h3 className="homepage">
         Confirmed cases: {confirmed.toLocaleString()}
       </h3>

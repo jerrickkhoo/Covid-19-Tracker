@@ -56,10 +56,10 @@ nav a:hover {
 
 #home{
   display: inline-block;
-  text-align: right;
+  text-align: center;
   width: 100%;
   margin: 0px;
-  padding: 100px;
+  padding: 100px;;
 }
 
 div{
@@ -113,6 +113,7 @@ div{
   margin: 0;
   padding: 0;
   height: 780px;
+  
 
 }
 
@@ -265,6 +266,8 @@ h1,h2,h3,h4,div,::placeholder{
 
 .homepage{
   padding:   0 20px;
+  font-size: 120%;
+  
 }
 
 #bg{
