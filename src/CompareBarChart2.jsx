@@ -24,7 +24,7 @@ setStatus("pending");
         setData(info.timeline.cases);
       })
       .catch((error) => {
-          setStatus('error')
+          setStatus("error");
       });
   };
 

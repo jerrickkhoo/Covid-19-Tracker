@@ -6,12 +6,14 @@ import CompareBarChart2 from './CompareBarChart2';
 const Compare = () => {
 const [status, setStatus] = useState("");
 const [data, setData] = useState("");
-const [search1, setSearch1] = useState('')
-const [search2, setSearch2] = useState("");
-const [chart1, setChart1] = useState("31");
-const [chart2, setChart2] = useState("31");
-const [timeframe1, setTimeframe1] = useState("No. Of Cases For Past 30 Days");
-const [timeframe2, setTimeframe2] = useState("No. Of Cases For Past 30 Days");
+const [search1, setSearch1] = useState('singapore')
+const [search2, setSearch2] = useState("malaysia");
+const [chart1, setChart1] = useState("8");
+const [chart2, setChart2] = useState("8");
+const [timeframe1, setTimeframe1] = useState("No. Of Cases For Past 7 Days");
+const [timeframe2, setTimeframe2] = useState("No. Of Cases For Past 7 Days");
+const [country1, setCountry1] = useState('singapore')
+const [country2, setCountry2] = useState("malaysia");
 
 
 
@@ -24,6 +26,9 @@ const [timeframe2, setTimeframe2] = useState("No. Of Cases For Past 30 Days");
      .then((info) => {
        setStatus("complete");
        setData(info);
+       setCountry1(info?.[0]?.country)
+    setCountry2(info?.[1]?.country);
+
 
     //    setSearch1('')
     //    setSearch2('')
@@ -152,7 +157,7 @@ const [timeframe2, setTimeframe2] = useState("No. Of Cases For Past 30 Days");
           <button onClick={handle1ChartAll} className="chartButton">
             All
           </button>
-          <CompareBarChart1 country={data[0]?.country} chart1={chart1} timeframe={timeframe1}/>
+          <CompareBarChart1 country={country1} chart1={chart1} timeframe={timeframe1}/>
         </div>
         <div id="c2" className="half">
           <h3 id="c2name">{data[1]?.country}</h3>
@@ -179,7 +184,7 @@ const [timeframe2, setTimeframe2] = useState("No. Of Cases For Past 30 Days");
           <button onClick={handle2ChartAll} className="chartButton">
             All
           </button>
-          <CompareBarChart2 country={data[1]?.country} chart2={chart2} timeframe={timeframe2}/>
+          <CompareBarChart2 country={country2} chart2={chart2} timeframe={timeframe2}/>
         </div>
       </div>
     </>
