@@ -10,8 +10,8 @@ const [search1, setSearch1] = useState('')
 const [search2, setSearch2] = useState("");
 const [chart1, setChart1] = useState("");
 const [chart2, setChart2] = useState("");
-const [timeframe1, setTimeframe1] = useState("no. of cases for past 30 days");
-const [timeframe2, setTimeframe2] = useState("no. of cases for past 30 days");
+const [timeframe1, setTimeframe1] = useState("No. Of Cases For Past 30 Days");
+const [timeframe2, setTimeframe2] = useState("No. Of Cases For Past 30 Days");
 
 
 
@@ -59,44 +59,44 @@ const [timeframe2, setTimeframe2] = useState("no. of cases for past 30 days");
 
  function handle1Chart7() {
    setChart1("8");
-   setTimeframe1('no. of cases for past 7 days')
+   setTimeframe1("No. Of Cases For Past 7 Days");
  }
 
  function handle1Chart30() {
    setChart1("31");
-    setTimeframe1("no. of cases for past 30 days");
+    setTimeframe1("No. Of Cases For Past 30 Days");
 
  }
  function handle1Chart1() {
    setChart1("366");
-    setTimeframe1("no. of cases for past year");
+    setTimeframe1("No. Of Cases for Past Year");
 
  }
  function handle1ChartAll() {
    setChart1("all");
-    setTimeframe1("all no. of cases");
+    setTimeframe1("All No. Of Cases");
 
  }
 
  function handle2Chart7() {
    setChart2("8");
-    setTimeframe2("no. of cases for past 7 days");
+    setTimeframe2("No. Of Cases For Past 7 Days");
 
  }
 
  function handle2Chart30() {
    setChart2("31");
-    setTimeframe2("no. of cases for past 30 days");
+    setTimeframe2("No. Of Cases For Past 30 Days");
 
  }
  function handle2Chart1() {
    setChart2("366");
-    setTimeframe2("no. of cases for past year");
+    setTimeframe2("No. Of Cases for Past Year");
 
  }
  function handle2ChartAll() {
    setChart2("all");
-    setTimeframe2("all no. of cases");
+    setTimeframe2("All No. Of Cases");
 
  }
 

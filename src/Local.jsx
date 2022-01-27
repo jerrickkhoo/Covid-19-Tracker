@@ -8,6 +8,8 @@ const Local = () => {
   const [data, setData] = useState("");
   const [data2, setData2] = useState("");
   const [data3, setData3] = useState("");
+  const [chart, setChart] = useState("");
+  const [timeframe, setTimeframe] = useState("No. Of Cases For Past 30 Days");
 
   const url = `https://corona.lmao.ninja/v2/countries/Singapore?yesterday=true&strict=true&query`;
 
@@ -79,7 +81,7 @@ const Local = () => {
     atLeastOneDose.push(items?.at_least_one_dose);
   });
 
-  const url3 = `https://corona.lmao.ninja/v2/historical/Singapore?lastdays=31`;
+  const url3 = `https://corona.lmao.ninja/v2/historical/Singapore?lastdays=${chart}`;
 
   const getData3 = () => {
     setStatus("pending");
@@ -115,6 +117,25 @@ const Local = () => {
   if (status === "error") {
     return "NO DATA FOUND";
   }
+
+  function handleChart7() {
+    setChart("8");
+    setTimeframe("No. Of Cases For Past 7 Days");
+  }
+
+  function handleChart30() {
+    setChart("31");
+    setTimeframe("No. Of Cases For Past 30 Days");
+  }
+  function handleChart1() {
+    setChart("366");
+    setTimeframe("No. Of Cases for Past Year");
+  }
+  function handleChartAll() {
+    setChart("all");
+    setTimeframe("All No. Of Cases");
+  }
+
   return (
     <>
       <div id="localHeader">
@@ -128,8 +149,8 @@ const Local = () => {
           <h5 style={{ color: "darkorange" }}>
             {activePercentage}% of total cases
           </h5>
-          </div>
-          <div class='stats3'>
+        </div>
+        <div class="stats3">
           <h3>Total cases: {cases.toLocaleString()} </h3>
           <h5 style={{ color: "red" }}>{critical} critical</h5>
           <h3>Total deaths: {deaths.toLocaleString()} </h3>
@@ -171,14 +192,26 @@ const Local = () => {
             }}
           />
         </div>
-        <div id="stats2">
-          <h2>No. of cases in past 30 days</h2>
+        <div id="stats2" style={{ textAlign: "left" }}>
+          <h3 style={{ textAlign: "center" }}>Historical Graph</h3>
+          <button onClick={handleChart7} className="chartButton">
+            7d
+          </button>
+          <button onClick={handleChart30} className="chartButton">
+            30d
+          </button>
+          <button onClick={handleChart1} className="chartButton">
+            1y
+          </button>
+          <button onClick={handleChartAll} className="chartButton">
+            All
+          </button>
           <Bar
             data={{
               labels: keys,
               datasets: [
                 {
-                  label: "# of cases for past 30 days",
+                  label: `${timeframe}`,
                   data: values,
                   backgroundColor: "teal",
                 },

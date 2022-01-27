@@ -310,6 +310,8 @@ p{
 
 #localHeader{
   display: flex;
+  height: 300px;
+  padding: 0
 }
 
 #singapore{

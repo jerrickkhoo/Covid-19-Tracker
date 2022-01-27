@@ -10,8 +10,8 @@ const Data = (props) => {
   const [data2, setData2] = useState("");
   const [h, setH] = useState("");
   const [chart,setChart]=useState('')
-  const [timeframe, setTimeframe] = useState('no. of cases for past 30 days')
-  const url = `https://corona.lmao.ninja/v2/historical/${params.c}?lastdays=all`;
+  const [timeframe, setTimeframe] = useState('No. Of Cases For Past 30 Days')
+  const url = `https://corona.lmao.ninja/v2/historical/${params.c}?lastdays=${chart}`;
 
   const getData = () => {
     setStatus("pending");
@@ -97,23 +97,22 @@ const Data = (props) => {
 
   function handleChart7 () {
     setChart('8')
-    setTimeframe('no. of cases for past 7 days')
+    setTimeframe('No. Of Cases For Past 7 Days')
   }
 
   function handleChart30() {
     setChart("31");
-    setTimeframe("no. of cases for past 30 days");
+    setTimeframe("No. Of Cases For Past 30 Days");
 
   }
   function handleChart1() {
     setChart("366");
-    setTimeframe("no. of cases for past year");
+    setTimeframe("No. Of Cases for Past Year");
 
   }
   function handleChartAll() {
     setChart("all");    
-    setTimeframe("all no. of cases");
-
+    setTimeframe("All No. Of Cases");
   }
 
   return (
@@ -151,7 +150,7 @@ const Data = (props) => {
       </div>
       <div className="secondDataDiv">
         <div className="dataChild1" style={{ backgroundColor: "white" }}>
-          <h3 id="hData">Historical Daily Cases:</h3>
+          <h3 id="hData">{timeframe}:</h3>
           <h4>{list}</h4>
         </div>
         <div className="dataChild2">
