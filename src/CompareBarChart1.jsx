@@ -6,6 +6,7 @@ Chart.register(...registerables);
 
 const CompareBarChart1 = (props) => {
   const [data, setData] = useState("");
+  const [status, setStatus] = useState("");
 
   const country1 = props.country;
   const chart = props.chart;
@@ -14,16 +15,30 @@ const CompareBarChart1 = (props) => {
   const url = `https://corona.lmao.ninja/v2/historical/${country1}?lastdays=${chart}`;
 
   const getData = () => {
+  setStatus("pending");
     fetch(url)
       .then((response) => response.json())
       .then((info) => {
+    setStatus("complete");
         setData(info.timeline.cases);
+      })
+      .catch((error) => {
+        setStatus("error");
+        console.error("Error:", error);
       });
   };
 
   useEffect(() => {
     getData();
   }, [url]);
+
+   if (status === "pending") {
+     return "LOADING";
+   }
+
+   if (status === "error") {
+     return "NO DATA FOUND";
+   }
 
   let keys = Object.keys(data);
   keys.shift();
@@ -35,7 +50,6 @@ const CompareBarChart1 = (props) => {
   }
   values.shift();
   // console.log("v", values);
-  console.log(chart);
 
     return (
     <div>

@@ -67,7 +67,7 @@ const Home = (props) => {
     );
   });
   
-  // console.log(highestRecovered)
+  console.log(highestRecovered)
 
    let deathPercentage = []
       for(let i = 0; i<data.length; i++){
