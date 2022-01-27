@@ -8,6 +8,13 @@ const [status, setStatus] = useState("");
 const [data, setData] = useState("");
 const [search1, setSearch1] = useState('')
 const [search2, setSearch2] = useState("");
+const [chart1, setChart1] = useState("");
+const [chart2, setChart2] = useState("");
+const [timeframe1, setTimeframe1] = useState("no. of cases for past 30 days");
+const [timeframe2, setTimeframe2] = useState("no. of cases for past 30 days");
+
+
+
 
  const url = `https://corona.lmao.ninja/v2/countries/${search1},${search2}?yesterday`;
  const getData = () => {
@@ -49,29 +56,73 @@ const [search2, setSearch2] = useState("");
      getData()
  }
 
+
+ function handle1Chart7() {
+   setChart1("8");
+   setTimeframe1('no. of cases for past 7 days')
+ }
+
+ function handle1Chart30() {
+   setChart1("31");
+    setTimeframe1("no. of cases for past 30 days");
+
+ }
+ function handle1Chart1() {
+   setChart1("366");
+    setTimeframe1("no. of cases for past year");
+
+ }
+ function handle1ChartAll() {
+   setChart1("all");
+    setTimeframe1("all no. of cases");
+
+ }
+
+ function handle2Chart7() {
+   setChart2("8");
+    setTimeframe2("no. of cases for past 7 days");
+
+ }
+
+ function handle2Chart30() {
+   setChart2("31");
+    setTimeframe2("no. of cases for past 30 days");
+
+ }
+ function handle2Chart1() {
+   setChart2("366");
+    setTimeframe2("no. of cases for past year");
+
+ }
+ function handle2ChartAll() {
+   setChart2("all");
+    setTimeframe2("all no. of cases");
+
+ }
+
   return (
-     <> 
-    <div id="searches">
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Country 1"
-          onChange={searchText1}
-          value={search1}
-        />
+    <>
+      <div id="searches">
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Country 1"
+            onChange={searchText1}
+            value={search1}
+          />
+        </div>
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Country 2"
+            onChange={searchText2}
+            value={search2}
+          />
+        </div>
       </div>
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Country 2"
-          onChange={searchText2}
-          value={search2}
-        />
+      <div id="button">
+        <button onClick={handleClick}>Submit</button>
       </div>
-    </div>
-    <div id='button'>
-    <button onClick={handleClick}>Submit</button> 
-    </div>
       <div className="compareC">
         <div id="c1" className="half">
           <h3 id="c1name">{data[0]?.country}</h3>
@@ -83,8 +134,22 @@ const [search2, setSearch2] = useState("");
           <h3>Total cases: {data[0]?.cases.toLocaleString()} </h3>
           <h3>Total deaths: {data[0]?.deaths.toLocaleString()} </h3>
           <h3>Total recovered: {data[0]?.recovered.toLocaleString()} </h3>
-          <h3>1 case per {data[0]?.oneCasePerPeople.toLocaleString()} people</h3>
-          <CompareBarChart1 country={data[0]?.country} />
+          <h3>
+            1 case per {data[0]?.oneCasePerPeople.toLocaleString()} people
+          </h3>
+          <button onClick={handle1Chart7} className="chartButton">
+            7d
+          </button>
+          <button onClick={handle1Chart30} className="chartButton">
+            30d
+          </button>
+          <button onClick={handle1Chart1} className="chartButton">
+            1y
+          </button>
+          <button onClick={handle1ChartAll} className="chartButton">
+            All
+          </button>
+          <CompareBarChart1 country={data[0]?.country} chart={chart1} timeframe={timeframe1}/>
         </div>
         <div id="c2" className="half">
           <h3 id="c2name">{data[1]?.country}</h3>
@@ -96,10 +161,24 @@ const [search2, setSearch2] = useState("");
           <h3>Total cases: {data[1]?.cases.toLocaleString()} </h3>
           <h3>Total deaths: {data[1]?.deaths.toLocaleString()} </h3>
           <h3>Total recovered: {data[1]?.recovered.toLocaleString()} </h3>
-          <h3>1 case per {data[1]?.oneCasePerPeople.toLocaleString()} people</h3>
-          <CompareBarChart2 country={data[1]?.country} />
+          <h3>
+            1 case per {data[1]?.oneCasePerPeople.toLocaleString()} people
+          </h3>
+          <button onClick={handle2Chart7} className="chartButton">
+            7d
+          </button>
+          <button onClick={handle2Chart30} className="chartButton">
+            30d
+          </button>
+          <button onClick={handle2Chart1} className="chartButton">
+            1y
+          </button>
+          <button onClick={handle2ChartAll} className="chartButton">
+            All
+          </button>
+          <CompareBarChart2 country={data[1]?.country} chart={chart2} timeframe={timeframe2}/>
         </div>
-    </div>
+      </div>
     </>
   );
 };

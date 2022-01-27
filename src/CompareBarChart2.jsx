@@ -8,8 +8,10 @@ const CompareBarChart2 = (props) => {
   const [data, setData] = useState("");
 
   const country2 = props.country;
+  const chart = props.chart
+  const timeframe = props.timeframe
 
-  const url = `https://corona.lmao.ninja/v2/historical/${country2}?lastdays=31`;
+  const url = `https://corona.lmao.ninja/v2/historical/${country2}?lastdays=${chart}`;
 
   const getData = () => {
     fetch(url)
@@ -45,7 +47,7 @@ const CompareBarChart2 = (props) => {
           labels: keys,
           datasets: [
             {
-              label: "# of cases for past 30 days",
+              label: `${timeframe}`,
               data: values,
               backgroundColor: "red",
             },

@@ -49,27 +49,29 @@ const Home = (props) => {
         </h3>
       )})
       
+
       let recoveredPercentage = []
       for(let i = 0; i<data.length; i++){
-        recoveredPercentage[i] = {'country': data?.[i]?.country,'percentage':parseInt((data?.[i]?.recovered/data?.[i]?.cases)*100).toFixed(2)}
+        recoveredPercentage[i] = {'country': data?.[i]?.country,'percentage':parseInt((data?.[i]?.recovered/data?.[i]?.cases)*100).toFixed(0)}
       }
-      // console.log(recoveredPercentage[0]?.country)
-  
-
-  const highestRecovered = recoveredPercentage.sort(function(a, b){return b.percentage - a.percentage;});
-  const top5R = highestRecovered.slice(0, 10);
-  console.log(highestRecovered);
-  let topRecovered = top5R.map((item) => {
-    return (
-      <h3>
+      
+      
+      const highestRecovered = recoveredPercentage.sort(function(a, b){return b.percentage - a.percentage;});
+      const top5R = highestRecovered.slice(0, 10);
+      console.log(highestRecovered);
+      let topRecovered = top5R.map((item) => {
+        return (
+          <h3>
         {item?.country}: {item?.percentage}%
       </h3>
     );
   });
+  
+  // console.log(highestRecovered)
 
    let deathPercentage = []
       for(let i = 0; i<data.length; i++){
-        deathPercentage[i] = {'country': data?.[i]?.country,'percentage':parseInt((data?.[i]?.deaths/data?.[i]?.cases)*100).toFixed(2)}
+        deathPercentage[i] = {'country': data?.[i]?.country,'percentage':parseInt((data?.[i]?.deaths/data?.[i]?.cases)*100).toFixed()}
       }
       // console.log(recoveredPercentage[0]?.country)
   

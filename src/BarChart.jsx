@@ -12,8 +12,10 @@ const [status, setStatus] = useState("");
 
 
   const params = props.params
+  const chart = props.chart
+  const timeframe = props.timeframe
 
-  const url = `https://corona.lmao.ninja/v2/historical/${params.c}?lastdays=31`;
+  const url = `https://corona.lmao.ninja/v2/historical/${params.c}?lastdays=${chart}`;
 
   const getData = () => {
     setStatus("pending");
@@ -58,7 +60,7 @@ const [status, setStatus] = useState("");
         labels: keys,
         datasets:[
             {
-                label: '# of cases for past 30 days',
+                label: `${timeframe}`,
                 data: values,
                 backgroundColor:'teal'
             }

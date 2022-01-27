@@ -8,21 +8,22 @@ const CompareBarChart1 = (props) => {
   const [data, setData] = useState("");
 
   const country1 = props.country;
+  const chart = props.chart;
+  const timeframe = props.timeframe
 
-  const url = `https://corona.lmao.ninja/v2/historical/${country1}?lastdays=31`;
+  const url = `https://corona.lmao.ninja/v2/historical/${country1}?lastdays=${chart}`;
 
   const getData = () => {
     fetch(url)
       .then((response) => response.json())
       .then((info) => {
         setData(info.timeline.cases);
-      })
+      });
   };
 
   useEffect(() => {
     getData();
   }, [url]);
-
 
   let keys = Object.keys(data);
   keys.shift();
@@ -34,15 +35,16 @@ const CompareBarChart1 = (props) => {
   }
   values.shift();
   // console.log("v", values);
+  console.log(chart);
 
-  return (
+    return (
     <div>
       <Bar
         data={{
           labels: keys,
           datasets: [
             {
-              label: "# of cases for past 30 days",
+              label: `${timeframe}`,
               data: values,
               backgroundColor: "teal",
             },

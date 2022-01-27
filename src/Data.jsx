@@ -9,7 +9,8 @@ const Data = (props) => {
   const [data, setData] = useState("");
   const [data2, setData2] = useState("");
   const [h, setH] = useState("");
-
+  const [chart,setChart]=useState('')
+  const [timeframe, setTimeframe] = useState('no. of cases for past 30 days')
   const url = `https://corona.lmao.ninja/v2/historical/${params.c}?lastdays=all`;
 
   const getData = () => {
@@ -94,6 +95,27 @@ const Data = (props) => {
   const casesPercentage = ((cases / population) * 100).toFixed(2);
 
 
+  function handleChart7 () {
+    setChart('8')
+    setTimeframe('no. of cases for past 7 days')
+  }
+
+  function handleChart30() {
+    setChart("31");
+    setTimeframe("no. of cases for past 30 days");
+
+  }
+  function handleChart1() {
+    setChart("366");
+    setTimeframe("no. of cases for past year");
+
+  }
+  function handleChartAll() {
+    setChart("all");    
+    setTimeframe("all no. of cases");
+
+  }
+
   return (
     <>
       <div className="firstDataDiv">
@@ -133,7 +155,20 @@ const Data = (props) => {
           <h4>{list}</h4>
         </div>
         <div className="dataChild2">
-          <BarChart params={params} />
+          <h3 style={{ textAlign: "center" }}>Historical Graph</h3>
+          <button onClick={handleChart7} className="chartButton">
+            7d
+          </button>
+          <button onClick={handleChart30} className="chartButton">
+            30d
+          </button>
+          <button onClick={handleChart1} className="chartButton">
+            1y
+          </button>
+          <button onClick={handleChartAll} className="chartButton">
+            All
+          </button>
+          <BarChart params={params} chart={chart} timeframe={timeframe} />
         </div>
       </div>
     </>

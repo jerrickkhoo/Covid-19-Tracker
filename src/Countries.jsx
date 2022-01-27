@@ -41,7 +41,6 @@ const countries = (props) => {
     arr.push(items?.country);
   });
 
-
   let dict = arr.reduce((acc, country) => {
     let firstLetter = country[0];
 
@@ -78,21 +77,20 @@ const countries = (props) => {
     [dict.X],
     [dict.Y],
     [dict.Z],
-  ]
+  ];
 
-
-const lists = newArray.map((item)=>{
-    let alphabet = (item[0]?.[0].charAt(0))
+  const lists = newArray.map((item) => {
+    let alphabet = item[0]?.[0].charAt(0);
     return (
-        <div className="child">
-          <h3 id='alph'>{alphabet}</h3>
+      <div className="child">
+        <h3 id="alph">{alphabet}</h3>
         {item?.[0]?.map((item1) => {
           return (
             <span key={item1}>
               <Link
                 to={"/data/" + item1}
                 style={{ color: "black" }}
-                className='link'
+                className="link"
               >
                 {item1}
               </Link>
@@ -100,16 +98,10 @@ const lists = newArray.map((item)=>{
           );
         })}
       </div>
-    );})
+    );
+  });
 
-
-
-  return (
-    <div className='country'>
-
-{lists}
- </div>
-  );
+  return <div className="country">{lists}</div>;
 };
 
 export default countries;

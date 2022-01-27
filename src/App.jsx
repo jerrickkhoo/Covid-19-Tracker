@@ -47,21 +47,18 @@ function App() {
   return (
     <div id="home">
       <nav>
-        <Link to="/">
-          <h1>Covid-19</h1>
-        </Link>
-
+        <Link to="/Home"><h1>Covid-19</h1></Link>
         <Link to="/Local">Local Info</Link>
         <Link to="/Countries">Countries</Link>
         <Link to="/Compare">Compare Countries</Link>
       </nav>
       <main>
         <Routes>
-          <Route path="/" element={<Home global={global} date={date} country={country} />} />
+          <Route path="/Home" element={<Home global={global} date={date} country={country} />} />
           <Route path="/Countries" element={<Countries country={country} />} />
-          <Route path="/data/:c" element={<Data country={country} />} />
-          <Route path="/compare" element={<Compare />} />
-          <Route path="/local" element={<Local />} />
+          <Route path="/Data/:c" element={<Data country={country} />} />
+          <Route path="/Compare" element={<Compare />} />
+          <Route path="/Local" element={<Local />} />
         </Routes>
       </main>
     </div>
