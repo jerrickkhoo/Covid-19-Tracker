@@ -105,7 +105,7 @@ const Data = (props) => {
         </div>
       </div>
       <div className="secondDataDiv">
-        <div className="dataChild1" style={{ backgroundColor: "teal" }}>
+        <div className="dataChild1" style={{ backgroundColor: "white" }}>
           <h3 id="hData">{timeframe}:</h3>
         <HistoricalData params={params} chart={chart}/>
         </div>
